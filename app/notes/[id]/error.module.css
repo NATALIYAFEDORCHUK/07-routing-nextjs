@@ -1,0 +1,11 @@
+.text {
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 14px 20px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  color: rgb(53, 51, 49);
+  background-color: rgb(236, 45, 77);
+  font-size: 18px;
+  text-align: center;
+}
