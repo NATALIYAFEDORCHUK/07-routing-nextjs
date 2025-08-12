@@ -31,10 +31,13 @@ export default function NotesClient({ initialData, tag }: NotesClientProps) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["notes", tag, debouncedSearchTerm, currentPage],
     queryFn: () =>
-      fetchNotes({ query: debouncedSearchTerm, page: currentPage, ...(tag && tag !== "All" && { tag }) }),
+      fetchNotes({
+        query: debouncedSearchTerm,
+        page: currentPage,
+        ...(tag && tag !== "All" && { tag }),
+      }),
     placeholderData: keepPreviousData,
-    initialData:
-      currentPage === 1 && debouncedSearchTerm === "" ? initialData : undefined,
+    initialData: currentPage === 1 && debouncedSearchTerm === "" ? initialData : undefined,
   });
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Could not fetch the list of notes.</p>;
@@ -51,11 +54,7 @@ export default function NotesClient({ initialData, tag }: NotesClientProps) {
             setPage={setCurrentPage}
           />
         )}
-        <button
-          type="button"
-          onClick={() => setIsModalOpen(true)}
-          className={css.button}
-        >
+        <button type="button" onClick={() => setIsModalOpen(true)} className={css.button}>
           Create note +
         </button>
       </header>
